@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from typing import Optional
+
 
 class UserModel(BaseModel):
     usern: str
@@ -16,3 +18,13 @@ class UserModelUpdate(BaseModel):
     
 class TokenModel(BaseModel):
     token: str
+
+class LaunchersModel(BaseModel):
+    steam_id:  Optional[str] = None
+    epicgames_id: Optional[str] = None
+    
+
+class SteamModel(BaseModel):
+    steam_id: str
+    id: str
+    
