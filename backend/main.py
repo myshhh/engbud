@@ -12,5 +12,5 @@ app.include_router(connection_laucnhers)
 app.include_router(games_request_router)
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='90.154.95.129')
+    uvicorn.run(app, host='37.204.200.243')
     

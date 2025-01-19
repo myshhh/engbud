@@ -24,7 +24,11 @@ steam = Steam(STEAM_KEY)
 def steam_request(steam_id):
     games = []
     responce = []
-    columns = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday", "fweek", "sweek", "tweek", "foweek"]
+    columns = ['monday_1', 'tuesday_1', 'wednesday_1', 'thursday_1', 'friday_1', 'saturday_1', 'sunday_1',
+               'monday_2', 'tuesday_2', 'wednesday_2', 'thursday_2', 'friday_2', 'saturday_2', 'sunday_2',
+               'monday_3', 'tuesday_3', 'wednesday_3', 'thursday_3', 'friday_3', 'saturday_3', 'sunday_3',
+               'monday_4', 'tuesday_4', 'wednesday_4','thursday_4', 'friday_4', 'saturday_4', 'sunday_4']
+    
     for i in steam.users.get_user_recently_played_games(steam_id)['games']:
         games.append({'game': i["name"], 'time': 0})
     for i in columns:
@@ -36,7 +40,7 @@ def steam_request(steam_id):
         else:
             games_for_user = {i: []}
             for j in json.loads(ans)['games']:
-                games_for_user[i].append({'game': j['game_name'], 'time': j["now minutes"] - j["start minutes"]})
+                games_for_user[i].append({'game': j['game_name'], 'time': (j["now minutes"] - j["start minutes"])})
             responce.append(games_for_user)
             
     return responce
